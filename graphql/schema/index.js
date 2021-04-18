@@ -7,10 +7,7 @@ module.exports = buildSchema(`
         url:  String!
         hash: String!
         createdAt: String!
-    }
-
-    input UrlInput {
-        url: String!
+        shortUrl: String!
     }
 
     type Query {

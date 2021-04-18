@@ -2,6 +2,7 @@ const Url = require("../../models/url");
 const genHash = require("../../utils/generateHash");
 const urlCheck = require("../../validation/urlCheck");
 const isValidUrl = require("../../validation/isValidUrl");
+const { API_URL } = require("../../config")
 
 module.exports = {
 
@@ -12,7 +13,8 @@ module.exports = {
                 return {
                     ...url._doc,
                     _id: url.id,
-                    createdAt: new Date(url._doc.createdAt).toISOString()
+                    createdAt: new Date(url._doc.createdAt).toISOString(),
+                    shortUrl: `${API_URL}/${url._doc.hash}`
                 }
             })
         } catch (error) {
@@ -36,7 +38,11 @@ module.exports = {
                 hash: await genHash()
             })
             const savedUrl = await newUrl.save()
-            return { ...savedUrl._doc, createdAt: new Date(savedUrl._doc.createdAt).toISOString() } // doing this next
+            return { 
+                ...savedUrl._doc, 
+                createdAt: new Date(savedUrl._doc.createdAt).toISOString(),
+                shortUrl: `${API_URL}/${savedUrl._doc.hash}`
+            } 
         } catch (error) {
             throw error
         }
