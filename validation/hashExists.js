@@ -9,3 +9,11 @@ const hashExists = async (hash) => {
 }
 
 module.exports = hashExists;
+
+
+/*
+TEST CONDITIONS
+
+hashExists() should return true if hash exists
+and return false if hash does not exist
+*/

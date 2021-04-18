@@ -18,3 +18,11 @@ async function genHash(){
 }
 
 module.exports = genHash
+
+/*
+TEST CONDITIONS
+
+hash must be a string
+hash must not be more than six characters
+
+*/
